@@ -1,14 +1,20 @@
-# Project 3 - **SteamSync** 🎮
+<table>
+  <tr>
+    <td><img src="https://i.postimg.cc/T37qn9PY/Steam-Sync-logo.png" alt="Steam-Sync-logo" width="250"></td>
+    <td>
+      <h1 style="font-size: 32px; margin-bottom: 5px;"><strong>SteamSync</strong> 🎮</h1>
+      <h3 style="margin-top: 0;">Empower Your Game Discovery Journey</h3>
+    </td>
+  </tr>
+</table>
 
-> **Empower Your Game Discovery Journey**
+**Submitted by:** Group 10
 
-**Submitted by:** Group 10 
-- Carlos Villatoro (Project Manager)
-- Marco Puig (Front-end Developer)
--uncan McKinley (Back-end Developer)
-- Fred DeBiase (UX/UI Designer)
-
-
+- **Carlos Villatoro**: Project Manager
+- **Marco Puig**: Front-end Developer
+- **Duncan McKinley**: Back-end Developer
+- **Fred DeBiase**: UX/UI Designer
+  
 ## 🚀 **Overview**
 **SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
 
