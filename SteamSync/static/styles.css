@@ -6,6 +6,44 @@ body {
     background: linear-gradient(to bottom, #1B2838, #0a0a0a);
 }
 
+.steam-background {
+    background-color: #1B2838;
+    background: linear-gradient(to bottom, #1B2838, #0a0a0a);
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.steam-container {
+    text-align: center;
+    width: 60%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Adding a slight white tint for a "window" feel */
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.steam-logo {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.steam-buttons {
+    margin-top: 20px;
+}
+
+.steam-btn {
+    margin: 5px;
+    width: 200px;
+}
+
 .navbar {
     background-color: #101822;
     /* Box Shadow for a raised/floating appearance */
@@ -241,8 +279,5 @@ body {
         max-width: 20%;
     }
 }
-
-
-
 
 

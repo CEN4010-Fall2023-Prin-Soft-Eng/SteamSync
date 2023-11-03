@@ -1,9 +1,9 @@
-from datetime import datetime
-from flask import Flask, jsonify, render_template, request, url_for
+from flask import Flask, render_template, request, url_for
 import http.client
 import json
 import re
-import os
+import requests
+
 
 app = Flask(__name__)
 
@@ -13,6 +13,19 @@ RAPIDAPI_HOST = "steam2.p.rapidapi.com"
 
 def sanitize_input(input_str):
     return re.sub(r'[^a-zA-Z0-9]', '', input_str)
+
+
+@app.route("/", methods=['GET'])
+def login():
+    return render_template("index.html")
+
+
+@app.route("/get-steam-user-summary/<steamId>", methods=['GET'])
+def get_steam_user_summary(steamId):
+    steamApiKey = "E4ABF7871264272AD62B7798CCF512DC"
+    url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={steamApiKey}&steamids={steamId}"
+    response = requests.get(url)
+    return response.json()
 
 
 def get_reviews_for_app(appId, limit=40):
@@ -31,7 +44,7 @@ def get_reviews_for_app(appId, limit=40):
     return reviews_data
 
 
-@app.route("/", methods=['GET'])  # Using the root path for homepage
+@app.route("/home", methods=['GET'])  # Using the root path for homepage
 def home():
     conn = http.client.HTTPSConnection("steam-store-data.p.rapidapi.com")
 
@@ -55,7 +68,7 @@ def home():
             else:
                 print(f"Missing ID for item: {item.get('name', 'Unknown Item')}")
 
-    return render_template("index.html", categories=categories)
+    return render_template("home.html", categories=categories)
 
 
 @app.route("/search", methods=['GET'])
