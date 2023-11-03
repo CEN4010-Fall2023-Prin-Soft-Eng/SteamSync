@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <td><img src="[[https://i.postimg.cc/T37qn9PY/Steam-Sync-logo.png](https://postimg.cc/YjDntBmg)](https://i.postimg.cc/vHbpLQYP/purple-png.png)" alt="Steam-Sync-logo" width="250"></td>
+    <td><img src="https://i.postimg.cc/T37qn9PY/Steam-Sync-logo.png" alt="Steam-Sync-logo" width="250"></td>
     <td>
       <h1 style="font-size: 32px; margin-bottom: 5px;"><strong>SteamSync</strong> 🎮</h1>
       <h3 style="margin-top: 0;">Empower Your Game Discovery Journey</h3>
