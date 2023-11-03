@@ -1,6 +1,10 @@
 <table>
   <tr>
     <td><img src="https://i.postimg.cc/vHbpLQYP/purple-png.png" alt="Steam-Sync-logo" width="500"></td>
+  </tr>
+</table>
+<table>
+  <tr>
     <td>
       <h2 style="margin-top: 5;">Empower Your Game Discovery Journey</h2>
     </td>
