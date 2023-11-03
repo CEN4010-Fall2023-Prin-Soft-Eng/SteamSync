@@ -15,7 +15,7 @@
 ## 🚀 **Overview**
 **SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
 
-**Time Invested**: ⏳ 12 hours and counting...
+**Time Invested**: ⏳ 20 hours and counting...
 
 ---
 
