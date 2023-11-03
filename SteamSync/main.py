@@ -71,13 +71,17 @@ def home():
     return render_template("home.html", categories=categories)
 
 
+import urllib.parse
+
 @app.route("/search", methods=['GET'])
 def search():
     query = request.args.get('query')
     if not query:
         return render_template("search.html", error="Please enter a search query.", games=[])
 
-    sanitized_query = sanitize_input(query)
+    print(f"Query before encoding: {query}")
+    encoded_query = urllib.parse.quote_plus(query)
+    print(f"Query after encoding: {encoded_query}")
 
     conn = http.client.HTTPSConnection(RAPIDAPI_HOST)
     headers = {
@@ -85,12 +89,18 @@ def search():
         'X-RapidAPI-Host': "steam2.p.rapidapi.com"
     }
 
-    endpoint = f"/search/{sanitized_query}/page/1"
+    endpoint = f"/search/{encoded_query}/page/1"
+    print(f"Endpoint: {endpoint}")
+    print(f"Headers: {headers}")
 
     try:
         conn.request("GET", endpoint, headers=headers)
         res = conn.getresponse()
+        print(f"Status Code: {res.status}")
+
         response_data = json.loads(res.read().decode("utf-8"))
+        print(f"Response: {response_data}")
+
         games = response_data  # This assumes the response is a list of games. Adjust accordingly if it's not.
 
     except Exception as e:
@@ -102,6 +112,7 @@ def search():
         return render_template("search.html", error="No games found for the given query.", games=[])
 
     return render_template("search.html", games=games)
+
 
 
 @app.route("/game/<int:game_id>", methods=['GET'])
