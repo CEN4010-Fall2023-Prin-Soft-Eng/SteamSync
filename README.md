@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <td><img src="https://i.postimg.cc/vHbpLQYP/purple-png.png" alt="Steam-Sync-logo" height="300" width="500"></td>
+    <td><img src="https://i.postimg.cc/vHbpLQYP/purple-png.png" alt="Steam-Sync-logo" height="300" width="700"></td>
   </tr>
 </table>
 
