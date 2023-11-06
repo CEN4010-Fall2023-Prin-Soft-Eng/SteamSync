@@ -17,7 +17,7 @@
 **Submitted by:** Group 10
 
 ### Team Member Name:
-Marco Puig: 
+Marco Puig
 
 #### Position in Project:
 Front-end Developer
@@ -32,7 +32,7 @@ Front-end Developer
 - The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
 
 ### Team Member Name:
-Duncan McKinley: 
+Duncan McKinley 
 
 #### Position in Project:
 Back-end Developer
@@ -49,7 +49,7 @@ Back-end Developer
 - The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
 
 ### Team Member Name:
-Carlos Villatoro: 
+Carlos Villatoro
 
 #### Position in Project:
 Project Manager
@@ -67,7 +67,7 @@ Project Manager
 - For any questions or suggestions related to project management, please feel free to contact me via email or Slack.
 
 ### Team Member Name:
-Fred DeBiaso: 
+Fred DeBiaso
 
 #### Position in Project:
 UX/UI Designer
