@@ -48,8 +48,40 @@ Back-end Developer
 #### Additional Notes:
 - The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
 
-- **Carlos Villatoro**: Project Manager
-- **Fred DeBiase**: UX/UI Designer
+### Team Member Name:
+Carlos Villatoro: 
+
+#### Position in Project:
+Project Manager
+
+## Changes Made:
+- Conducted initial project planning, defining project scope, objectives, and deliverables
+- Established project timelines and milestones, ensuring adherence to the project schedule
+- Coordinated with the development team to allocate tasks and responsibilities based on individual skills and expertise
+- Scheduled meetings to discuss project updates, address concerns, and gather feedback
+
+## Additional Notes:
+- The project management approach follows Agile principles, with an emphasis on iterative development and continuous improvement.
+- Risk management strategies are in place to mitigate any potential challenges that may arise during the project lifecycle.
+- The project team is encouraged to provide regular feedback and suggestions to foster a collaborative and productive work environment.
+- For any questions or suggestions related to project management, please feel free to contact me via email or Slack.
+
+### Team Member Name:
+Fred DeBiaso: 
+
+#### Position in Project:
+UX/UI Designer
+
+## Changes Made:
+- Designed wireframe and layout for key website pages
+- Developed the overall visual design language, including color schemes
+- Collaborated with the development team to ensure the seamless integration of design elements into the final product
+- Ensured consistency in design elements and user interface patterns across different pages of the website
+- Provided design guidelines and documentation for future design iterations and updates
+
+## Additional Notes:
+- The design process prioritizes user-centered design principles, aiming to create an intuitive and engaging experience for the users.
+- The design elements are created with scalability and responsiveness in mind to ensure a consistent experience across various devices and screen sizes.
 
 ---
 
