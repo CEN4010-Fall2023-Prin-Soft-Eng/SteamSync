@@ -8,6 +8,12 @@
   </tr>
 </table>
 
+## 🚀 **Overview**
+**SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
+
+**Time Invested**: ⏳ 12 hours and counting...
+
+---
 **Submitted by:** Group 10
 
 ### Team Member Name:
@@ -44,11 +50,6 @@ Back-end Developer
 
 - **Carlos Villatoro**: Project Manager
 - **Fred DeBiase**: UX/UI Designer
-  
-## 🚀 **Overview**
-**SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
-
-**Time Invested**: ⏳ 12 hours and counting...
 
 ---
 
