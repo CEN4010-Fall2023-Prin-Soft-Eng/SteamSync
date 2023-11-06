@@ -10,28 +10,28 @@
 
 **Submitted by:** Group 10
 
-## Team Member Name:
+### Team Member Name:
 Marco Puig: 
 
-## Position in Project:
+#### Position in Project:
 Front-end Developer
 
-## Changes Made:
+#### Changes Made:
 - Designed and developed the user interface for the main landing page.
 - Implemented responsive design for various screen sizes
 - Integrated Steam API for fetching and storing user data and user information such as favorited games.
 - Implemented prototyped features using JavaScript.
 
-## Additional Notes:
+#### Additional Notes:
 - The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
 
-## Team Member Name:
-*Duncan McKinley: 
+### Team Member Name:
+Duncan McKinley: 
 
-## Position in Project:
+#### Position in Project:
 Back-end Developer
 
-## Changes Made:
+#### Changes Made:
 - Optimized database queries for improved performance and scalability
 - Implemented data validation and error handling to ensure data integrity and a smooth user experience
 - Integrated caching mechanisms to improve the overall performance of the application
@@ -39,7 +39,7 @@ Back-end Developer
 - Implemented features using Python.
 - Conducted testing and debugging to ensure the smooth functioning of the front-end components
 
-## Additional Notes:
+#### Additional Notes:
 - The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
 
 - **Carlos Villatoro**: Project Manager
