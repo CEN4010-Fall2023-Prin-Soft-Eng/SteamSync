@@ -2,7 +2,6 @@
 body {
     background-color: #1B2838;
     color: white;
-    /* Linear Gradient Background for depth */
     background: linear-gradient(to bottom, #1B2838, #0a0a0a);
 }
 
@@ -101,6 +100,28 @@ body {
 }
 
 .review-card {
+    padding: 1rem;
+    background-color: #101822;  /* Adjust based on your actual background color */
+    border-radius: 10px;  /* Giving it rounded corners to match the main content box */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);  /* Optional: Adding a subtle shadow for depth */
+    color: #ffffff;  /* Assuming the text is white based on the image */
+    font-size: 14px;  /* Adjust to match the game details font size */
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns content to the top */
+    gap: 1rem; /* space between the elements inside */
+
+}
+
+.news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;  /* Spacing between the cards */
+}
+
+.news-card {
     padding: 1rem;
     background-color: #101822;  /* Adjust based on your actual background color */
     border-radius: 10px;  /* Giving it rounded corners to match the main content box */
@@ -273,11 +294,17 @@ body {
     margin-bottom: 30px;  /* Add some spacing after the title */
 }
 
+
 @media (min-width: 992px) {
     .game_col-md-2-4 {
         flex: 0 0 20%;
         max-width: 20%;
     }
 }
+
+.btn-primary {
+    background-color
+
+
 
 

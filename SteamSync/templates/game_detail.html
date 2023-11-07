@@ -12,7 +12,8 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
     <!-- Updated href attribute to point to the home page -->
     <a class="navbar-brand d-flex align-items-center" href="/home">
         <img src="{{ url_for('static', filename='logo7.png') }}" alt="SteamSync Logo" width="500" height="150" class="d-inline-block align-top">
@@ -28,6 +29,7 @@
                 <a class="nav-link" href="/home">Home</a>
             </li>
         </ul>
+
         <!-- Search bar -->
         <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
@@ -78,8 +80,25 @@
             </div>
         </div>
 
+<!-- News Column -->
+<div class="game-news col-md-6">
+    <h3>Game News:</h3>
+    {% if news %}
+        {% for item in news %}
+            <div class="news-card mb-1">
+                <p>{{ item.contents}}</p>  <!-- Truncate to 200 characters -->
+                <a href="{{ item.url }}" target="_blank">Read more</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No news items found.</p>
+    {% endif %}
+</div>
+
+
+
         <!-- Reviews Column -->
-        <div class="game-reviews col-md-6">
+        <div class="game-reviews col-md-12">
             <h3>Recent reviews:</h3>
             <div class="review-grid">
                 {% for review in reviews %}
@@ -91,8 +110,12 @@
         </div>
 
     </div>
+
 </div>
-</div>
+
+<!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
