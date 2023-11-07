@@ -3,11 +3,11 @@ import http.client
 import json
 import re
 import requests
-
+import urllib.parse
 
 app = Flask(__name__)
 
-RAPIDAPI_KEY = "f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e"
+RAPIDAPI_KEY = "c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa"
 RAPIDAPI_HOST = "steam2.p.rapidapi.com"
 
 
@@ -31,8 +31,8 @@ def get_steam_user_summary(steamId):
 def get_reviews_for_app(appId, limit=40):
     conn = http.client.HTTPSConnection("steam2.p.rapidapi.com")
     headers = {
-        'X-RapidAPI-Key': "f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e",
-        'X-RapidAPI-Host': "steam2.p.rapidapi.com"
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': RAPIDAPI_HOST
     }
 
     endpoint = f"/appReviews/{appId}/limit/{limit}/*"
@@ -49,7 +49,7 @@ def home():
     conn = http.client.HTTPSConnection("steam-store-data.p.rapidapi.com")
 
     headers = {
-        'X-RapidAPI-Key': 'f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e',  # Replace with your actual API key
+        'X-RapidAPI-Key': 'f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e',
         'X-RapidAPI-Host': 'steam-store-data.p.rapidapi.com'
     }
 
@@ -71,7 +71,36 @@ def home():
     return render_template("home.html", categories=categories)
 
 
-import urllib.parse
+@app.route("/game/<int:appid>/news", methods=['GET'])
+def game_news(appid):
+    conn = http.client.HTTPSConnection("steam2.p.rapidapi.com")
+    headers = {
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': RAPIDAPI_HOST
+    }
+
+    endpoint = f"/newsForApp/{appid}/limit/10/300"  # Use the app_id dynamically
+    conn.request("GET", endpoint, headers=headers)
+    res = conn.getresponse()
+    data = json.loads(res.read().decode("utf-8"))
+
+    # Debugging: Print the data to see if it contains news items
+    print(data)
+
+    if 'appnews' in data and 'newsitems' in data['appnews']:
+        newsitems = data['appnews']['newsitems']
+        # Debugging: Print the news_items
+        print(newsitems)
+    else:
+        newsitems = []
+
+    # Debugging: Print a message if no news items were found
+    if not newsitems:
+        print("No news items found.")
+
+    # Change this to the template you're actually using for game details
+    return render_template("gamedetails.html", news=newsitems, appid=appid)
+
 
 @app.route("/search", methods=['GET'])
 def search():
@@ -85,8 +114,8 @@ def search():
 
     conn = http.client.HTTPSConnection(RAPIDAPI_HOST)
     headers = {
-        'X-RapidAPI-Key': "f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e",
-        'X-RapidAPI-Host': "steam2.p.rapidapi.com"
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': RAPIDAPI_HOST
     }
 
     endpoint = f"/search/{encoded_query}/page/1"
@@ -114,13 +143,12 @@ def search():
     return render_template("search.html", games=games)
 
 
-
 @app.route("/game/<int:game_id>", methods=['GET'])
 def game_detail(game_id):
     conn = http.client.HTTPSConnection("steam2.p.rapidapi.com")
     headers = {
-        'X-RapidAPI-Key': "f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e",
-        'X-RapidAPI-Host': "steam2.p.rapidapi.com"
+        'X-RapidAPI-Key': RAPIDAPI_KEY,
+        'X-RapidAPI-Host': RAPIDAPI_HOST
     }
 
     # Fetching game details
@@ -129,15 +157,20 @@ def game_detail(game_id):
     game = json.loads(res.read().decode("utf-8"))
 
     # Fetching game reviews
-    conn.request("GET", f"/appReviews/{game_id}/limit/40/*", headers=headers)# adjust the limit as needed
+    conn.request("GET", f"/appReviews/{game_id}/limit/40/*", headers=headers)
     res_reviews = conn.getresponse()
     reviews_data = json.loads(res_reviews.read().decode("utf-8"))
-
-    # Extracting the first 10 reviews
     reviews = reviews_data['reviews'][:10]  # extracting the first 10 reviews
 
-    # Rendering the template with game details and reviews
-    return render_template("game_detail.html", game=game, reviews=reviews)
+    # Fetching game news
+    endpoint = f"/newsForApp/{game_id}/limit/10/300"  # Use the game_id dynamically
+    conn.request("GET", endpoint, headers=headers)
+    res_news = conn.getresponse()
+    news_data = json.loads(res_news.read().decode("utf-8"))
+    newsitems = news_data.get('appnews', {}).get('newsitems', [])[:5]
+
+    # Rendering the template with game details, reviews, and news
+    return render_template("game_detail.html", game=game, reviews=reviews, news=newsitems)
 
 
 if __name__ == "__main__":
