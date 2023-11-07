@@ -23,8 +23,7 @@ Marco Puig
 Front-end Developer
 
 #### Issues Assigned:
-Create Frontend for Login Screen page
-Implement Backend functionality on Sign in/up Button Clicked
+Create Frontend for Login Screen page. Implement Backend functionality on Sign in/up Button Clicked
 
 #### Changes Made:
 - Designed and developed the user interface for the main landing page.
