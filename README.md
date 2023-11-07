@@ -1,17 +1,13 @@
 <table>
   <tr>
-    <td><img src="https://i.postimg.cc/T37qn9PY/Steam-Sync-logo.png" alt="Steam-Sync-logo" width="250"></td>
-    <td>
-      <h1 style="font-size: 32px; margin-bottom: 5px;"><strong>SteamSync</strong> 🎮</h1>
-      <h3 style="margin-top: 0;">Empower Your Game Discovery Journey</h3>
-    </td>
+    <td><img src="https://i.postimg.cc/vHbpLQYP/purple-png.png" alt="Steam-Sync-logo" height="250" width="700"></td>
   </tr>
 </table>
 
 ## 🚀 **Overview**
 **SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
 
-**Time Invested**: ⏳ 12 hours and counting...
+**Time Invested**: ⏳ 20 hours and counting...
 
 ---
 **Submitted by:** Group 10
