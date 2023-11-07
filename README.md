@@ -22,6 +22,10 @@ Marco Puig
 #### Position in Project:
 Front-end Developer
 
+#### Issues Assigned:
+Create Frontend for Login Screen page
+Implement Backend functionality on Sign in/up Button Clicked
+
 #### Changes Made:
 - Designed and developed the user interface for the main landing page.
 - Implemented responsive design for various screen sizes
@@ -33,6 +37,9 @@ Front-end Developer
 
 ### Team Member Name:
 Duncan McKinley 
+
+#### Issues Assigned:
+Video game detailed page
 
 #### Position in Project:
 Back-end Developer
@@ -54,6 +61,10 @@ Carlos Villatoro
 #### Position in Project:
 Project Manager
 
+#### Issues Assigned:
+Create "List Trending games" page
+Design Wireframe
+
 #### Changes Made:
 - Conducted initial project planning, defining project scope, objectives, and deliverables
 - Established project timelines and milestones, ensuring adherence to the project schedule
@@ -71,6 +82,9 @@ Fred DeBiaso
 
 #### Position in Project:
 UX/UI Designer
+
+### Issues Assigned:
+Create "List discounted games" page
 
 #### Changes Made:
 - Designed wireframe and layout for key website pages
