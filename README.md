@@ -102,7 +102,7 @@ Create "List discounted games" page
 
 ### **Coming Soon:**
 - [x] 🔍 **Personalized Game Recommendations** - Tailored picks for every gamer.
-- [ ] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
+- [x] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
 - [X] 🎛 **Advanced Game Search** - Dive deep with precise filters.
 
 ### **Already Rolled Out:**
