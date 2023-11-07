@@ -4,18 +4,93 @@
   </tr>
 </table>
 
-
-**Submitted by:** Group 10
-
-- **Carlos Villatoro**: Project Manager
-- **Marco Puig**: Front-end Developer
-- **Duncan McKinley**: Back-end Developer
-- **Fred DeBiase**: UX/UI Designer
-  
 ## 🚀 **Overview**
 **SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
 
 **Time Invested**: ⏳ 20 hours and counting...
+
+---
+**Submitted by:** Group 10
+
+### Team Member Name:
+Marco Puig
+
+#### Position in Project:
+Front-end Developer
+
+#### Issues Assigned:
+Create Frontend for Login Screen page. Implement Backend functionality on Sign in/up Button Clicked
+
+#### Changes Made:
+- Designed and developed the user interface for the main landing page.
+- Implemented responsive design for various screen sizes
+- Integrated Steam API for fetching and storing user data and user information such as favorited games.
+- Implemented prototyped features using JavaScript.
+
+#### Additional Notes:
+- The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
+
+### Team Member Name:
+Duncan McKinley 
+
+#### Issues Assigned:
+Video game detailed page
+
+#### Position in Project:
+Back-end Developer
+
+#### Changes Made:
+- Optimized database queries for improved performance and scalability
+- Implemented data validation and error handling to ensure data integrity and a smooth user experience
+- Integrated caching mechanisms to improve the overall performance of the application
+- Implemented scheduled tasks for data updates and maintenance
+- Implemented features using Python.
+- Conducted testing and debugging to ensure the smooth functioning of the front-end components
+
+#### Additional Notes:
+- The website has so far been tested on various browsers and devices to ensure cross-browser compatibility and responsiveness.
+
+### Team Member Name:
+Carlos Villatoro
+
+#### Position in Project:
+Project Manager
+
+#### Issues Assigned:
+Create "List Trending games" page
+Design Wireframe
+
+#### Changes Made:
+- Conducted initial project planning, defining project scope, objectives, and deliverables
+- Established project timelines and milestones, ensuring adherence to the project schedule
+- Coordinated with the development team to allocate tasks and responsibilities based on individual skills and expertise
+- Scheduled meetings to discuss project updates, address concerns, and gather feedback
+
+#### Additional Notes:
+- The project management approach follows Agile principles, with an emphasis on iterative development and continuous improvement.
+- Risk management strategies are in place to mitigate any potential challenges that may arise during the project lifecycle.
+- The project team is encouraged to provide regular feedback and suggestions to foster a collaborative and productive work environment.
+- For any questions or suggestions related to project management, please feel free to contact me via email or Slack.
+
+### Team Member Name:
+Fred DeBiaso
+
+#### Position in Project:
+UX/UI Designer
+
+### Issues Assigned:
+Create "List discounted games" page
+
+#### Changes Made:
+- Designed wireframe and layout for key website pages
+- Developed the overall visual design language, including color schemes
+- Collaborated with the development team to ensure the seamless integration of design elements into the final product
+- Ensured consistency in design elements and user interface patterns across different pages of the website
+- Provided design guidelines and documentation for future design iterations and updates
+
+#### Additional Notes:
+- The design process prioritizes user-centered design principles, aiming to create an intuitive and engaging experience for the users.
+- The design elements are created with scalability and responsiveness in mind to ensure a consistent experience across various devices and screen sizes.
 
 ---
 
@@ -23,7 +98,7 @@
 
 ### **Coming Soon:**
 - [x] 🔍 **Personalized Game Recommendations** - Tailored picks for every gamer.
-- [ ] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
+- [x] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
 - [X] 🎛 **Advanced Game Search** - Dive deep with precise filters.
 
 ### **Already Rolled Out:**
