@@ -58,7 +58,7 @@
   - Implemented risk management strategies.
   - Maintained an open feedback environment.
 
-### Fred DeBiaso
+### Fred DeBiase
 - **Position**: UX/UI Designer
 - **Responsibilities**:
   - Created wireframes and layouts for key website pages.
