@@ -47,7 +47,7 @@
   - Set up scheduled tasks for data updates.
   - Tested and debugged front-end integrations with Python.
 
-### Carlos Villatoro
+### Carlos Villatoro 
 - **Position**: Project Manager
 - **Responsibilities**:
   - Managed project scope and deliverables.
