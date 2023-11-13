@@ -44,7 +44,7 @@ def get_reviews_for_app(appId, limit=40):
     return reviews_data
 
 
-@app.route("/home-with-news", methods=['GET'])
+@app.route("/home_with_news", methods=['GET'])
 def home_with_news():
     # Fetch reviews from Giant Bomb API
     gb_api_key = "f9d12f24cfad3b0267e7ab2ee48d1fdd7d5ec1c5"
