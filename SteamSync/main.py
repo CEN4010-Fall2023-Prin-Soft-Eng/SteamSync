@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 import http.client
 import json
 import re
@@ -8,7 +8,9 @@ import urllib.parse
 app = Flask(__name__)
 
 RAPIDAPI_KEY = "c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa"
+GAMESPOTAPI_KEY = "15db3545ca5bec59186fca6096262dfacf0c7659ss"
 RAPIDAPI_HOST = "steam2.p.rapidapi.com"
+GAME_SPOT_API_BASE_URL = "https://www.gamespot.com/api"
 
 
 def sanitize_input(input_str):
@@ -150,6 +152,18 @@ def game_detail(game_id):
         'X-RapidAPI-Key': RAPIDAPI_KEY,
         'X-RapidAPI-Host': RAPIDAPI_HOST
     }
+
+@app.route("/articles", methods=['GET'])
+def get_articles():
+    params = {
+        'api_key': GAMESPOTAPI_KEY,
+        'format': 'json'  # assuming the API returns JSON data
+    }
+    response = requests.get(f"{GAME_SPOT_API_BASE_URL}/articles/", params=params)
+    if response.status_code == 200:
+        return jsonify(response.json())
+    else:
+        return jsonify({'error': 'Failed to fetch data from GameSpot API'}), response.status_code
 
     # Fetching game details
     conn.request("GET", f"/appDetail/{game_id}", headers=headers)
