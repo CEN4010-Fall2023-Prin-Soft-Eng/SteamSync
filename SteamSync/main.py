@@ -8,7 +8,7 @@ import urllib.parse
 app = Flask(__name__)
 
 RAPIDAPI_KEY = "c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa"
-GAMESPOTAPI_KEY = "15db3545ca5bec59186fca6096262dfacf0c7659ss"
+GAMESPOTAPI_KEY = "15db3545ca5bec59186fca6096262dfacf0c7659"
 RAPIDAPI_HOST = "steam2.p.rapidapi.com"
 GAME_SPOT_API_BASE_URL = "https://www.gamespot.com/api"
 
@@ -153,17 +153,34 @@ def game_detail(game_id):
         'X-RapidAPI-Host': RAPIDAPI_HOST
     }
 
-@app.route("/articles", methods=['GET'])
+
+@app.route("/home", methods=['GET'])
 def get_articles():
-    params = {
-        'api_key': GAMESPOTAPI_KEY,
-        'format': 'json'  # assuming the API returns JSON data
+    print("Fetching articles...")  # Confirm this line is printed in the console
+    headers = {
+        'User-Agent': 'SteamSync/1.0 (cvillatoro2021@fau.edu)',
+        'Authorization': 'Bearer ' + GAMESPOTAPI_KEY
     }
-    response = requests.get(f"{GAME_SPOT_API_BASE_URL}/articles/", params=params)
+    params = {
+        'format': 'json'
+    }
+    response = requests.get(f"{GAME_SPOT_API_BASE_URL}/articles/", headers=headers, params=params)
+
+    print("Response Status Code:", response.status_code)  # Check the response status code
     if response.status_code == 200:
-        return jsonify(response.json())
+        data = response.json()
+        print("API Response:", data)  # Debug print
+
+        articles = data.get('results', [])
+        print("Found articles:", articles)  # Debug print if articles are found
+        return render_template('home.html', articles=articles)
     else:
-        return jsonify({'error': 'Failed to fetch data from GameSpot API'}), response.status_code
+        error_message = response.json().get('error', 'Unknown Error')
+        print('Error fetching articles:', error_message, response.status_code)  # Debug print with status code
+        return jsonify({'error': error_message}), response.status_code
+
+
+
 
     # Fetching game details
     conn.request("GET", f"/appDetail/{game_id}", headers=headers)
