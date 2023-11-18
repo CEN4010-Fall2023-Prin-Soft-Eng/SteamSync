@@ -306,7 +306,17 @@ body {
     margin: 1rem;
     background-color: #343a40; /* Adjust based on your theme */
     color: #ffffff; /* For white text */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Push content to the top and the button to the bottom */
+    transition: border-color 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid transparent;
     /* Rest of your .card styles */
+}
+.card:hover {
+    border-color: #ffffff;
+    transform: scale(1.05);
 }
 
 .card-img-top {
@@ -317,10 +327,15 @@ body {
 
 .card-body {
     padding: 1.25rem;
+    flex: 1; /* Allow the body to take up the available space */
 }
 
 .card-title {
     /* Add styles if needed */
+    transition: color 0.3s ease-in-out;
+}
+.card:hover .card-title {
+    color: #000000; /* Replace with your desired color */
 }
 
 .card-text {
@@ -331,7 +346,9 @@ body {
     text-overflow: ellipsis;
 }
 .btn-primary {
-    background-color
+    background-color: #314155; /* Blue color, change it to your preferred color */
+    border-color: #FFFFFF; /* Border color, change it if necessary */
+    margin-top: auto; /* This will push the button to the bottom of the flex container */
 
         body {
             text-align: center; /* Center align text */
@@ -369,7 +386,10 @@ body {
         .article a:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
-
-
+}
+.btn-primary:hover {
+    background-color: #1B2838; /* Replace with your desired hover color */
+    border-color: #FFFFFF; /* Replace with the desired border color if needed */
+}
 
 
