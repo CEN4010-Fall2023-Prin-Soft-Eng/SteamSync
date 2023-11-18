@@ -45,6 +45,93 @@ def get_reviews_for_app(appId, limit=40):
 
     return reviews_data
 
+@app.route("/home_with_news", methods=['GET'])
+def gamespot_articles():
+    # Define the endpoint and parameters for the Gamespot articles API
+    gamespot_api_key = "15db3545ca5bec59186fca6096262dfacf0c7659"
+    gamespot_endpoint = "https://www.gamespot.com/api/articles/"
+    params = {
+        'api_key': gamespot_api_key,
+        'format': 'json',
+        'limit': 100  # or any other parameters you need
+    }
+
+    headers = {
+        'User-Agent': 'SteamSync'  # Use your unique User-Agent here
+    }
+
+    try:
+        # Make the request to the Gamespot API
+        response = requests.get(gamespot_endpoint, params=params, headers=headers)
+        response.raise_for_status()  # Raise an HTTPError if an error occurred
+
+        # Parse the JSON response
+        articles_data = response.json()
+
+        # Check if 'results' key is present in the response
+        articles = articles_data.get('results', [])
+
+    except requests.exceptions.RequestException as e:
+        # Handle exceptions (print, log, or return an error response)
+        print(f"Error fetching Gamespot articles: {e}")
+        if response and response.status_code == 403:
+            print("Forbidden: Check your API key, rate limits, and endpoint access.")
+        articles = []
+
+    # Now, make an additional call to the image gallery API
+    # for article in articles:
+    #     image_gallery_endpoint = f"https://www.gamespot.com/api/image_galleries/?api_key={gamespot_api_key}&filter=id:{article['id']}&format=json"
+    #     image_response = requests.get(image_gallery_endpoint, headers=headers)
+    #     image_gallery_data = image_response.json()
+    #
+    #     if image_gallery_data.get('results'):
+    #         # gallery = image_gallery_data['results'][0]
+    #         # article['gallery_image'] = gallery['image']['original']
+    #         original_image_url = image_gallery_data['results'][0]['image']['original']
+    #         article['gallery_image'] = original_image_url
+
+    # Render the template with Gamespot articles
+    return render_template("home_with_news.html", articles=articles)
+
+
+
+# @app.route("/home_with_news", methods=['GET'])
+# def home_with_news():
+#     # Fetch reviews from Giant Bomb API
+#     gb_api_key = "f9d12f24cfad3b0267e7ab2ee48d1fdd7d5ec1c5"
+#     gb_endpoint = f"https://www.giantbomb.com/api/reviews/?api_key={gb_api_key}"
+#
+#     params = {
+#         'format': 'json',
+#         'limit': 100,
+#         # 'filter': 'YOUR_FILTERS_HERE',  # Add filters
+#         'field_list': 'api_detail_url,deck,description,dlc_name,game,guid,id,publish_date,release,reviewer,score,site_detail_url',  # Add the fields you want
+#     }
+#
+#     headers = {
+#         'User-Agent': 'bgnb_studios'  # Set custom User-Agent here
+#     }
+#
+#     try:
+#         # Make the request to the Giant Bomb API with custom User-Agent
+#         response = requests.get(gb_endpoint, params=params, headers=headers)
+#         response.raise_for_status()  # Raise an HTTPError for bad responses
+#
+#         # Parse the JSON response
+#         gb_reviews_data = response.json()
+#
+#         # Check if 'results' key is present in the response
+#         gb_reviews = gb_reviews_data.get('results', [])
+#
+#     except requests.exceptions.RequestException as e:
+#         # Handle exceptions (print, log, or return an error response)
+#         print(f"Error fetching Giant Bomb reviews: {e}")
+#         if response and response.status_code == 403:
+#             print("Forbidden: Check your API key, rate limits, and endpoint access.")
+#         gb_reviews = []
+#
+#     # Render the template with Giant Bomb reviews
+#     return render_template("home_with_news.html", gb_reviews=gb_reviews)
 
 @app.route("/home", methods=['GET'])  # Using the root path for homepage
 def home():
