@@ -306,6 +306,7 @@ body {
     margin: 1rem;
     background-color: #343a40; /* Adjust based on your theme */
     color: #ffffff; /* For white text */
+
     /* Rest of your .card styles */
 }
 
@@ -371,5 +372,86 @@ body {
         }
 
 
+    transition: border-color 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid transparent;
+    /* Rest of your .card styles */
+}
+.card:hover {
+    border-color: #ffffff;
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 60%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    padding: 1.25rem;
+
+}
+
+.card-title {
+    /* Add styles if needed */
+    transition: color 0.3s ease-in-out;
+}
+.card:hover .card-title {
+    color: #BA6DBB; /* Replace with your desired color */
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.btn-primary {
+    background-color: #314155; /* Blue color, change it to your preferred color */
+    border-color: #FFFFFF; /* Border color, change it if necessary */
+
+        body {
+            text-align: center; /* Center align text */
+            font-family: Arial, sans-serif; /* Set a font */
+        }
+        #articles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center tiles horizontally */
+            gap: 10px; /* Space between tiles */
+            padding: 10px;
+        }
+        .article {
+            border: 1px solid #ccc; /* Border around each tile */
+            padding: 20px;
+            margin-bottom: 20px; /* Space below each tile */
+            width: 300px; /* Fixed width, adjust as needed */
+            text-align: left; /* Align text inside tiles to left */
+            background-color: #f9f9f9; /* Light background for the tile */
+            border-radius: 8px; /* Rounded corners for the tile */
+        }
+        .article h2 {
+            color: #333; /* Dark color for the title */
+            margin-bottom: 15px; /* Space below the title */
+        }
+        .article a {
+            display: inline-block; /* Make the anchor a block element */
+            padding: 10px 20px;
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px; /* Rounded corners for the button */
+            margin-top: 10px; /* Space above the button */
+        }
+        .article a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+}
+.btn-primary:hover {
+    background-color: #1B2838; /* Replace with your desired hover color */
+    border-color: #FFFFFF; /* Replace with the desired border color if needed */
+}
 
 

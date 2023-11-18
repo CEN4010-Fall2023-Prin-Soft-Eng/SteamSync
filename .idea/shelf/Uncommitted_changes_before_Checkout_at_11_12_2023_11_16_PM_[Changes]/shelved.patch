@@ -1,0 +1,99 @@
+Index: SteamSync/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import Flask, render_template, request, url_for\r\nimport http.client\r\nimport json\r\nimport re\r\nimport requests\r\nimport urllib.parse\r\n\r\napp = Flask(__name__)\r\n\r\nRAPIDAPI_KEY = \"c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa\"\r\nRAPIDAPI_HOST = \"steam2.p.rapidapi.com\"\r\n\r\n\r\ndef sanitize_input(input_str):\r\n    return re.sub(r'[^a-zA-Z0-9]', '', input_str)\r\n\r\n\r\n@app.route(\"/\", methods=['GET'])\r\ndef login():\r\n    return render_template(\"index.html\")\r\n\r\n\r\n@app.route(\"/get-steam-user-summary/<steamId>\", methods=['GET'])\r\ndef get_steam_user_summary(steamId):\r\n    steamApiKey = \"E4ABF7871264272AD62B7798CCF512DC\"\r\n    url = f\"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={steamApiKey}&steamids={steamId}\"\r\n    response = requests.get(url)\r\n    return response.json()\r\n\r\n\r\ndef get_reviews_for_app(appId, limit=40):\r\n    conn = http.client.HTTPSConnection(\"steam2.p.rapidapi.com\")\r\n    headers = {\r\n        'X-RapidAPI-Key': RAPIDAPI_KEY,\r\n        'X-RapidAPI-Host': RAPIDAPI_HOST\r\n    }\r\n\r\n    endpoint = f\"/appReviews/{appId}/limit/{limit}/*\"\r\n    conn.request(\"GET\", endpoint, headers=headers)\r\n\r\n    res = conn.getresponse()\r\n    reviews_data = json.loads(res.read().decode(\"utf-8\"))\r\n\r\n    return reviews_data\r\n\r\n\r\n@app.route(\"/home\", methods=['GET'])  # Using the root path for homepage\r\ndef home():\r\n    conn = http.client.HTTPSConnection(\"steam-store-data.p.rapidapi.com\")\r\n\r\n    headers = {\r\n        'X-RapidAPI-Key': 'f9e9157472mshd29534641f6cf76p17a316jsnd7768c1ea96e',\r\n        'X-RapidAPI-Host': 'steam-store-data.p.rapidapi.com'\r\n    }\r\n\r\n    conn.request(\"GET\", \"/api/featuredcategories/\", headers=headers)\r\n\r\n    res = conn.getresponse()\r\n    data = json.loads(res.read().decode(\"utf-8\"))\r\n\r\n    categories = {k: v for k, v in data.items() if isinstance(v, dict) and 'items' in v}\r\n\r\n    # Adding detail URLs to each item using the game's ID\r\n    for category in categories.values():\r\n        for item in category['items']:\r\n            if 'id' in item:\r\n                item['detail_url'] = url_for('game_detail', game_id=item['id'])\r\n            else:\r\n                print(f\"Missing ID for item: {item.get('name', 'Unknown Item')}\")\r\n\r\n    return render_template(\"home.html\", categories=categories)\r\n\r\n\r\n@app.route(\"/game/<int:appid>/news\", methods=['GET'])\r\ndef game_news(appid):\r\n    conn = http.client.HTTPSConnection(\"steam2.p.rapidapi.com\")\r\n    headers = {\r\n        'X-RapidAPI-Key': RAPIDAPI_KEY,\r\n        'X-RapidAPI-Host': RAPIDAPI_HOST\r\n    }\r\n\r\n    endpoint = f\"/newsForApp/{appid}/limit/10/300\"  # Use the app_id dynamically\r\n    conn.request(\"GET\", endpoint, headers=headers)\r\n    res = conn.getresponse()\r\n    data = json.loads(res.read().decode(\"utf-8\"))\r\n\r\n    # Debugging: Print the data to see if it contains news items\r\n    print(data)\r\n\r\n    if 'appnews' in data and 'newsitems' in data['appnews']:\r\n        newsitems = data['appnews']['newsitems']\r\n        # Debugging: Print the news_items\r\n        print(newsitems)\r\n    else:\r\n        newsitems = []\r\n\r\n    # Debugging: Print a message if no news items were found\r\n    if not newsitems:\r\n        print(\"No news items found.\")\r\n\r\n    # Change this to the template you're actually using for game details\r\n    return render_template(\"gamedetails.html\", news=newsitems, appid=appid)\r\n\r\n\r\n@app.route(\"/search\", methods=['GET'])\r\ndef search():\r\n    query = request.args.get('query')\r\n    if not query:\r\n        return render_template(\"search.html\", error=\"Please enter a search query.\", games=[])\r\n\r\n    print(f\"Query before encoding: {query}\")\r\n    encoded_query = urllib.parse.quote_plus(query)\r\n    print(f\"Query after encoding: {encoded_query}\")\r\n\r\n    conn = http.client.HTTPSConnection(RAPIDAPI_HOST)\r\n    headers = {\r\n        'X-RapidAPI-Key': RAPIDAPI_KEY,\r\n        'X-RapidAPI-Host': RAPIDAPI_HOST\r\n    }\r\n\r\n    endpoint = f\"/search/{encoded_query}/page/1\"\r\n    print(f\"Endpoint: {endpoint}\")\r\n    print(f\"Headers: {headers}\")\r\n\r\n    try:\r\n        conn.request(\"GET\", endpoint, headers=headers)\r\n        res = conn.getresponse()\r\n        print(f\"Status Code: {res.status}\")\r\n\r\n        response_data = json.loads(res.read().decode(\"utf-8\"))\r\n        print(f\"Response: {response_data}\")\r\n\r\n        games = response_data  # This assumes the response is a list of games. Adjust accordingly if it's not.\r\n\r\n    except Exception as e:\r\n        # Log the exception for debugging\r\n        print(f\"Error: {e}\")\r\n        return render_template(\"search.html\", error=\"Failed to fetch game results. Please try again.\", games=[])\r\n\r\n    if not games:\r\n        return render_template(\"search.html\", error=\"No games found for the given query.\", games=[])\r\n\r\n    return render_template(\"search.html\", games=games)\r\n\r\n\r\n@app.route(\"/game/<int:game_id>\", methods=['GET'])\r\ndef game_detail(game_id):\r\n    conn = http.client.HTTPSConnection(\"steam2.p.rapidapi.com\")\r\n    headers = {\r\n        'X-RapidAPI-Key': RAPIDAPI_KEY,\r\n        'X-RapidAPI-Host': RAPIDAPI_HOST\r\n    }\r\n\r\n    # Fetching game details\r\n    conn.request(\"GET\", f\"/appDetail/{game_id}\", headers=headers)\r\n    res = conn.getresponse()\r\n    game = json.loads(res.read().decode(\"utf-8\"))\r\n\r\n    # Fetching game reviews\r\n    conn.request(\"GET\", f\"/appReviews/{game_id}/limit/40/*\", headers=headers)\r\n    res_reviews = conn.getresponse()\r\n    reviews_data = json.loads(res_reviews.read().decode(\"utf-8\"))\r\n    reviews = reviews_data['reviews'][:10]  # extracting the first 10 reviews\r\n\r\n    # Fetching game news\r\n    endpoint = f\"/newsForApp/{game_id}/limit/10/300\"  # Use the game_id dynamically\r\n    conn.request(\"GET\", endpoint, headers=headers)\r\n    res_news = conn.getresponse()\r\n    news_data = json.loads(res_news.read().decode(\"utf-8\"))\r\n    newsitems = news_data.get('appnews', {}).get('newsitems', [])[:5]\r\n\r\n    # Rendering the template with game details, reviews, and news\r\n    return render_template(\"game_detail.html\", game=game, reviews=reviews, news=newsitems)\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    app.run(debug=True)\r\n\r\n\r\n
+===================================================================
+diff --git a/SteamSync/main.py b/SteamSync/main.py
+--- a/SteamSync/main.py	
++++ b/SteamSync/main.py	
+@@ -8,7 +8,10 @@
+ app = Flask(__name__)
+ 
+ RAPIDAPI_KEY = "c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa"
++GAMESPOTAPI_KEY = "15db3545ca5bec59186fca6096262dfacf0c7659"
+ RAPIDAPI_HOST = "steam2.p.rapidapi.com"
++GAME_SPOT_API_BASE_URL = "https://www.gamespot.com/api"
++
+ 
+ 
+ def sanitize_input(input_str):
+@@ -151,6 +154,10 @@
+         'X-RapidAPI-Host': RAPIDAPI_HOST
+     }
+ 
++@app.route("/articles", methods =['GET'])
++
++
++
+     # Fetching game details
+     conn.request("GET", f"/appDetail/{game_id}", headers=headers)
+     res = conn.getresponse()
+Index: SteamSync/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.11 (SteamApp)\" project-jdk-type=\"Python SDK\" />\r\n  <component name=\"PyCharmProfessionalAdvertiser\">\r\n    <option name=\"shown\" value=\"true\" />\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/SteamSync/.idea/misc.xml b/SteamSync/.idea/misc.xml
+--- a/SteamSync/.idea/misc.xml	
++++ b/SteamSync/.idea/misc.xml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (SteamApp)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (Final Project code)" project-jdk-type="Python SDK" />
+   <component name="PyCharmProfessionalAdvertiser">
+     <option name="shown" value="true" />
+   </component>
+Index: .idea/cen4010-prin-soft-eng-final-project-final-project-001-group-10.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.11 (cen4010-prin-soft-eng-final-project-final-project-001-group-10)\" jdkType=\"Python SDK\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+===================================================================
+diff --git a/.idea/cen4010-prin-soft-eng-final-project-final-project-001-group-10.iml b/.idea/cen4010-prin-soft-eng-final-project-final-project-001-group-10.iml
+--- a/.idea/cen4010-prin-soft-eng-final-project-final-project-001-group-10.iml	
++++ b/.idea/cen4010-prin-soft-eng-final-project-final-project-001-group-10.iml	
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/venv" />
++    </content>
+     <orderEntry type="jdk" jdkName="Python 3.11 (cen4010-prin-soft-eng-final-project-final-project-001-group-10)" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+Index: SteamSync/templates/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\" />\r\n    <link rel=\"stylesheet\" href=\"{{ url_for('static', filename='styles.css') }}\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n    <script type=\"text/javascript\" src=\"https://npmcdn.com/parse/dist/parse.min.js\"></script>\r\n</head>\r\n<body>\r\n    <div class=\"steam-background\">\r\n        <div class=\"steam-container\">\r\n            <img src=\"{{ url_for('static', filename='logo7.png') }}\" alt=\"SteamSync Logo\" class=\"steam-logo\">\r\n            <div class=\"steam-buttons\">\r\n                <button id=\"loginButton\" class=\"btn btn-primary steam-btn\">Login with Steam</button>\r\n                <button id=\"signUpButton\" class=\"btn btn-secondary steam-btn steam-btn-signup\">Sign Up with Steam</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>\r\n\r\n\r\n    <script>\r\n        // Initialize Parse\r\n        Parse.initialize(\"QD3o4wcV8jOu1DrPizbXjzTg7tuNZPGoVKyP7RwR\", \"mad7NPqDFXX0PlkRSITENXZJk2eYzsPcN2Urygoi\");\r\n        Parse.serverURL = \"https://parseapi.back4app.com/\";\r\n\r\n        // Steam Web API Key\r\n        const steamApiKey = \"E4ABF7871264272AD62B7798CCF512DC\";\r\n\r\n        // Redirect to Steam login page\r\n        function redirectToSteamLogin() {\r\n            window.location.href = `https://steamcommunity.com/openid/login?openid.ns=http://specs.openid.net/auth/2.0&openid.mode=checkid_setup&openid.return_to=${window.location.href}&openid.realm=${window.location.href}&openid.ns.sreg=http://openid.net/extensions/sreg/1.1&openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&openid.identity=http://specs.openid.net/auth/2.0/identifier_select&openid.mode=checkid_setup&openid.ns.ax=http://openid.net/srv/ax/1.0&openid.ax.mode=fetch_request&openid.ax.type.email=http://axschema.org/contact/email&openid.ax.required=email&openid.ax.type.firstname=http://axschema.org/namePerson/first&openid.ax.required=firstname&openid.ax.type.lastname=http://axschema.org/namePerson/last&openid.ax.required=lastname`;\r\n        }\r\n\r\n        async function handleSteamResponse(isLogin) {\r\n        if (Parse.User.current()) {\r\n        Parse.User.logOut();\r\n         }\r\n    const params = new URLSearchParams(window.location.search);\r\n    const steamOpenId = params.get('openid.identity');\r\n    const steamId = steamOpenId.split('/').pop();\r\n    const response = await fetch(`/get-steam-user-summary/${steamId}`);\r\n    const data = await response.json();\r\n    const steamUsername = data.response.players[0].personaname;\r\n\r\n    // Use the Steam username to create/login a user\r\n    const user = new Parse.User();\r\n    user.set('username', steamUsername);\r\n    user.set('password', 'aDefaultPassword'); // Set a default password for Steam users\r\n\r\n    if (isLogin) {\r\n        try {\r\n            await Parse.User.logIn(steamUsername, 'aDefaultPassword');\r\n            alert(`User logged in successfully: ${steamUsername}`);\r\n            window.location.href = '/home';\r\n        } catch (error) {\r\n            alert(`Error: ${error.message}`);\r\n        }\r\n    } else {\r\n        try {\r\n            const newUser = await user.signUp();\r\n            alert(`User signed up successfully: ${newUser.get('username')}`);\r\n            window.location.href = '/home';\r\n        } catch (error) {\r\n            alert(`Error: ${error.message}`);\r\n        }\r\n    }\r\n}\r\n\r\n\r\n        document.getElementById('loginButton').addEventListener('click', () => {\r\n            sessionStorage.setItem('isLogin', 'true');\r\n            redirectToSteamLogin();\r\n        });\r\n\r\n        document.getElementById('signUpButton').addEventListener('click', () => {\r\n            sessionStorage.setItem('isLogin', 'false');\r\n            redirectToSteamLogin();\r\n        });\r\n\r\n        // Check if the URL contains Steam login response parameters\r\n        if (window.location.search.includes('openid.identity')) {\r\n            const isLogin = sessionStorage.getItem('isLogin') === 'true';\r\n            handleSteamResponse(isLogin);\r\n        }\r\n    </script>\r\n</body>\r\n</html>\r\n
+===================================================================
+diff --git a/SteamSync/templates/index.html b/SteamSync/templates/index.html
+--- a/SteamSync/templates/index.html	
++++ b/SteamSync/templates/index.html	
+@@ -19,7 +19,7 @@
+ </body>
+ </html>
+ 
+-
++//Add the credentials and Steam Web API key to the backend not the frontend
+     <script>
+         // Initialize Parse
+         Parse.initialize("QD3o4wcV8jOu1DrPizbXjzTg7tuNZPGoVKyP7RwR", "mad7NPqDFXX0PlkRSITENXZJk2eYzsPcN2Urygoi");
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.11 (cen4010-prin-soft-eng-final-project-final-project-001-group-10)\" project-jdk-type=\"Python SDK\" />\r\n  <component name=\"PyCharmProfessionalAdvertiser\">\r\n    <option name=\"shown\" value=\"true\" />\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -1,5 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="Black">
++    <option name="sdkName" value="Python 3.11 (cen4010-prin-soft-eng-final-project-final-project-001-group-10)" />
++  </component>
+   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (cen4010-prin-soft-eng-final-project-final-project-001-group-10)" project-jdk-type="Python SDK" />
+   <component name="PyCharmProfessionalAdvertiser">
+     <option name="shown" value="true" />

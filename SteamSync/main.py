@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 import http.client
 import json
 import re
@@ -8,7 +8,9 @@ import urllib.parse
 app = Flask(__name__)
 
 RAPIDAPI_KEY = "c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa"
+GAMESPOTAPI_KEY = "15db3545ca5bec59186fca6096262dfacf0c7659"
 RAPIDAPI_HOST = "steam2.p.rapidapi.com"
+GAME_SPOT_API_BASE_URL = "https://www.gamespot.com/api"
 
 
 def sanitize_input(input_str):
@@ -91,45 +93,6 @@ def gamespot_articles():
     # Render the template with Gamespot articles
     return render_template("home_with_news.html", articles=articles)
 
-
-
-# @app.route("/home_with_news", methods=['GET'])
-# def home_with_news():
-#     # Fetch reviews from Giant Bomb API
-#     gb_api_key = "f9d12f24cfad3b0267e7ab2ee48d1fdd7d5ec1c5"
-#     gb_endpoint = f"https://www.giantbomb.com/api/reviews/?api_key={gb_api_key}"
-#
-#     params = {
-#         'format': 'json',
-#         'limit': 100,
-#         # 'filter': 'YOUR_FILTERS_HERE',  # Add filters
-#         'field_list': 'api_detail_url,deck,description,dlc_name,game,guid,id,publish_date,release,reviewer,score,site_detail_url',  # Add the fields you want
-#     }
-#
-#     headers = {
-#         'User-Agent': 'bgnb_studios'  # Set custom User-Agent here
-#     }
-#
-#     try:
-#         # Make the request to the Giant Bomb API with custom User-Agent
-#         response = requests.get(gb_endpoint, params=params, headers=headers)
-#         response.raise_for_status()  # Raise an HTTPError for bad responses
-#
-#         # Parse the JSON response
-#         gb_reviews_data = response.json()
-#
-#         # Check if 'results' key is present in the response
-#         gb_reviews = gb_reviews_data.get('results', [])
-#
-#     except requests.exceptions.RequestException as e:
-#         # Handle exceptions (print, log, or return an error response)
-#         print(f"Error fetching Giant Bomb reviews: {e}")
-#         if response and response.status_code == 403:
-#             print("Forbidden: Check your API key, rate limits, and endpoint access.")
-#         gb_reviews = []
-#
-#     # Render the template with Giant Bomb reviews
-#     return render_template("home_with_news.html", gb_reviews=gb_reviews)
 
 @app.route("/home", methods=['GET'])  # Using the root path for homepage
 def home():
@@ -238,6 +201,33 @@ def game_detail(game_id):
         'X-RapidAPI-Host': RAPIDAPI_HOST
     }
 
+
+@app.route("/home", methods=['GET'])
+def get_articles():
+    print("Fetching articles...")  # Confirm this line is printed in the console
+    headers = {
+        'User-Agent': 'SteamSync/1.0 (cvillatoro2021@fau.edu)',
+        'Authorization': 'Bearer ' + GAMESPOTAPI_KEY
+    }
+    params = {
+        'format': 'json'
+    }
+    response = requests.get(f"{GAME_SPOT_API_BASE_URL}/articles/", headers=headers, params=params)
+
+    print("Response Status Code:", response.status_code)  # Check the response status code
+    if response.status_code == 200:
+        data = response.json()
+        print("API Response:", data)  # Debug print
+
+        articles = data.get('results', [])
+        print("Found articles:", articles)  # Debug print if articles are found
+        return render_template('home.html', articles=articles)
+    else:
+        error_message = response.json().get('error', 'Unknown Error')
+        print('Error fetching articles:', error_message, response.status_code)  # Debug print with status code
+        return jsonify({'error': error_message}), response.status_code
+
+
     # Fetching game details
     conn.request("GET", f"/appDetail/{game_id}", headers=headers)
     res = conn.getresponse()
@@ -262,3 +252,42 @@ def game_detail(game_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# @app.route("/home_with_news", methods=['GET'])
+# def home_with_news():
+#     # Fetch reviews from Giant Bomb API
+#     gb_api_key = "f9d12f24cfad3b0267e7ab2ee48d1fdd7d5ec1c5"
+#     gb_endpoint = f"https://www.giantbomb.com/api/reviews/?api_key={gb_api_key}"
+#
+#     params = {
+#         'format': 'json',
+#         'limit': 100,
+#         # 'filter': 'YOUR_FILTERS_HERE',  # Add filters
+#         'field_list': 'api_detail_url,deck,description,dlc_name,game,guid,id,publish_date,release,reviewer,score,site_detail_url',  # Add the fields you want
+#     }
+#
+#     headers = {
+#         'User-Agent': 'bgnb_studios'  # Set custom User-Agent here
+#     }
+#
+#     try:
+#         # Make the request to the Giant Bomb API with custom User-Agent
+#         response = requests.get(gb_endpoint, params=params, headers=headers)
+#         response.raise_for_status()  # Raise an HTTPError for bad responses
+#
+#         # Parse the JSON response
+#         gb_reviews_data = response.json()
+#
+#         # Check if 'results' key is present in the response
+#         gb_reviews = gb_reviews_data.get('results', [])
+#
+#     except requests.exceptions.RequestException as e:
+#         # Handle exceptions (print, log, or return an error response)
+#         print(f"Error fetching Giant Bomb reviews: {e}")
+#         if response and response.status_code == 403:
+#             print("Forbidden: Check your API key, rate limits, and endpoint access.")
+#         gb_reviews = []
+#
+#     # Render the template with Giant Bomb reviews
+#     return render_template("home_with_news.html", gb_reviews=gb_reviews)
