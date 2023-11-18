@@ -306,9 +306,9 @@ body {
     margin: 1rem;
     background-color: #343a40; /* Adjust based on your theme */
     color: #ffffff; /* For white text */
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Push content to the top and the button to the bottom */
+
+
+
     transition: border-color 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
     border: 2px solid transparent;
@@ -327,7 +327,7 @@ body {
 
 .card-body {
     padding: 1.25rem;
-    flex: 1; /* Allow the body to take up the available space */
+
 }
 
 .card-title {
@@ -335,7 +335,7 @@ body {
     transition: color 0.3s ease-in-out;
 }
 .card:hover .card-title {
-    color: #000000; /* Replace with your desired color */
+    color: #BA6DBB; /* Replace with your desired color */
 }
 
 .card-text {
@@ -348,7 +348,6 @@ body {
 .btn-primary {
     background-color: #314155; /* Blue color, change it to your preferred color */
     border-color: #FFFFFF; /* Border color, change it if necessary */
-    margin-top: auto; /* This will push the button to the bottom of the flex container */
 
         body {
             text-align: center; /* Center align text */

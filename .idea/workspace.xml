@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8c59aa6-8692-4116-9838-399cbd456fbd" name="Changes" comment="Updated the css file, .html file, and the endpoint code to the Gamespot API">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="c8c59aa6-8692-4116-9838-399cbd456fbd" name="Changes" comment="Updated the css code to display a better UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SteamSync/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SteamSync/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/static/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +20,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="8baccc4f-157c-4348-a6f8-8f67975f93f2" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699854445335</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated the css code to display a better UI">
+      <option name="closed" value="true" />
+      <created>1700286566007</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700286566007</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +125,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add the gamespot API enpoint" />
     <MESSAGE value="Updated the css file, .html file, and the endpoint code to the Gamespot API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the css file, .html file, and the endpoint code to the Gamespot API" />
+    <MESSAGE value="Updated the css code to display a better UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the css code to display a better UI" />
   </component>
 </project>
