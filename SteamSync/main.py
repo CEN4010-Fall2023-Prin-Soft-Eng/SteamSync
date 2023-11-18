@@ -93,6 +93,7 @@ def gamespot_articles():
     # Render the template with Gamespot articles
     return render_template("home_with_news.html", articles=articles)
 
+
 @app.route("/home", methods=['GET'])  # Using the root path for homepage
 def home():
     conn = http.client.HTTPSConnection("steam-store-data.p.rapidapi.com")
@@ -227,8 +228,6 @@ def get_articles():
         return jsonify({'error': error_message}), response.status_code
 
 
-
-
     # Fetching game details
     conn.request("GET", f"/appDetail/{game_id}", headers=headers)
     res = conn.getresponse()
@@ -253,10 +252,6 @@ def get_articles():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
 
 
 # @app.route("/home_with_news", methods=['GET'])
