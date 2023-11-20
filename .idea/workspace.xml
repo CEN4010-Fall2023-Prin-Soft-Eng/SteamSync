@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8c59aa6-8692-4116-9838-399cbd456fbd" name="Changes" comment="Updated the css code to display a better UI">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SteamSync/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
