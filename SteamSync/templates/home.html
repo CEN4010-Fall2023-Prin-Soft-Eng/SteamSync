@@ -61,102 +61,49 @@
 </nav>
 
 
-<!--<div class="container mt-3">-->
-<!--    &lt;!&ndash; Loop through each category &ndash;&gt;-->
-<!--    {% for category_id, category in categories.items() %}-->
-<!--        {% if category.id != 'cat_spotlight' %}-->
-<!--            <div class="category-title">{{ category.name }}</div>-->
+<div class="container mt-3">
+    <!-- Loop through each category -->
+    {% for category_id, category in categories.items() %}
+        {% if category.id != 'cat_spotlight' %}
+            <div class="category-title">{{ category.name }}</div>
 
-<!--            {% set displayed_games = [] %}-->
-<!--            <div class="slider">-->
-<!--                {% for item in category['items'] %}-->
-<!--                    {% if item.name not in displayed_games %}-->
-<!--                        <div>-->
-<!--                            <div class="card bg-dark larger-card">-->
-<!--                                <a href="{{ item.detail_url }}">-->
-<!--                                    <img src="{{ item.header_image }}" alt="{{ item.name }}" class="card-img-top img-fluid">-->
-<!--                                    <div class="card-body">-->
-<!--                                        <h5 class="card-title">{{ item.name }}</h5>-->
-<!--                                        {% if item.discounted %}-->
-<!--                                            <p class="card-text">Discount: {{ item.discount_percent }}%</p>-->
-<!--                                            <p class="card-text">Original Price: ${{ item.original_price | float / 100 }}</p>-->
-<!--                                            <p class="card-text">Final Price: ${{ item.final_price | float / 100 }}</p>-->
-<!--                                        {% endif %}-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        {% set _ = displayed_games.append(item.name) %}-->
-<!--                    {% endif %}-->
-<!--                {% endfor %}-->
-<!--            </div>-->
-<!--        {% endif %}-->
-<!--    {% endfor %}-->
-<!--</div>-->
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Game Articles</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-4">
-    <h1>Video Game Articles</h1>
-    <div class="row">
-        {% for article in articles %}
-            <div class="col-md-4 mb-3">
-                <div class="card h-100">
-                    <img src="{{ article['image'] }}" class="card-img-top" alt="{{ article['title'] }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ article['title'] }}</h5>
-                        <p class="card-text">{{ article['deck'] }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ article['site_detail_url'] }}" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
+            {% set displayed_games = [] %}
+            <div class="slider">
+                {% for item in category['items'] %}
+                    {% if item.name not in displayed_games %}
+                        <div>
+                            <div class="card bg-dark larger-card">
+                                <a href="{{ item.detail_url }}">
+                                    <img src="{{ item.header_image }}" alt="{{ item.name }}" class="card-img-top img-fluid">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ item.name }}</h5>
+                                        {% if item.discounted %}
+                                            <p class="card-text">Discount: {{ item.discount_percent }}%</p>
+                                            <p class="card-text">Original Price: ${{ item.original_price | float / 100 }}</p>
+                                            <p class="card-text">Final Price: ${{ item.final_price | float / 100 }}</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% set _ = displayed_games.append(item.name) %}
+                    {% endif %}
+                {% endfor %}
             </div>
-        {% else %}
-            <p>No articles found.</p>
-        {% endfor %}
-    </div>
+        {% endif %}
+    {% endfor %}
 </div>
 
-        <!-- Categories Section -->
-<!--        <h2>Categories</h2>-->
-<!--        <div class="row">-->
-<!--            {% for category in categories %}-->
-<!--                <div class="col-md-4 mb-3">-->
-<!--                    <div class="card">-->
-<!--                        <div class="card-body">-->
-<!--                            &lt;!&ndash; Display Category Name &ndash;&gt;-->
-<!--                            <h5 class="card-title">{{ categories }}</h5>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            {% endfor %}-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-
-<!--<script>-->
-<!--$(document).ready(function(){-->
-<!--    $('.slider').slick({-->
-<!--        infinite: true,-->
-<!--        slidesToShow: 3, // or any number of slides you want to show at once-->
-<!--        slidesToScroll: 1,-->
-<!--        adaptiveHeight: true-->
-<!--    });-->
-<!--});-->
-<!--</script>-->
+<script>
+$(document).ready(function(){
+    $('.slider').slick({
+        infinite: true,
+        slidesToShow: 3, // or any number of slides you want to show at once
+        slidesToScroll: 1,
+        adaptiveHeight: true
+    });
+});
+</script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -165,5 +112,3 @@
 </body>
 
 </html>
-
-
