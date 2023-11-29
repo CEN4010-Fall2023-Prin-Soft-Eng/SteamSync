@@ -45,6 +45,7 @@ def get_reviews_for_app(appId, limit=40):
 
     return reviews_data
 
+
 @app.route("/home_with_news", methods=['GET'])
 def gamespot_articles():
     # Define the endpoint and parameters for the Gamespot articles API
@@ -120,6 +121,7 @@ def home():
 
     return render_template("home.html", categories=categories)
 
+
 @app.route("/Discounted_games", methods=['GET'])
 def Discounted_games():
     conn = http.client.HTTPSConnection("steam-store-data.p.rapidapi.com")
@@ -145,6 +147,7 @@ def Discounted_games():
                 print(f"Missing ID for item: {item.get('name', 'Unknown Item')}")
 
     return render_template("Discounted_games.html", categories=categories)
+
 
 @app.route("/game/<int:appid>/news", methods=['GET'])
 def game_news(appid):
@@ -250,3 +253,6 @@ def game_detail(game_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
