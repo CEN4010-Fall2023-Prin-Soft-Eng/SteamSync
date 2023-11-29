@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ef249814-adb5-4d61-ab7d-011c284ab0f2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SteamSync/static/styles2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SteamSync/templates/Discounted_games.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cen4010-prin-soft-eng-final-project-final-project-001-group-10.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_12_2023_11_16_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/templates/game_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/templates/game_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/templates/home_with_news.html" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/templates/home_with_news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SteamSync/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/SteamSync/templates/search.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2YpkOcxtLmL5l4MSk8cAmrAHpLD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/dunca/Downloads/cen4010-prin-soft-eng-final-project-final-project-001-group-10"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ef249814-adb5-4d61-ab7d-011c284ab0f2" name="Changes" comment="" />
+      <created>1701229878121</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701229878121</updated>
+    </task>
+    <servers />
+  </component>
+</project>

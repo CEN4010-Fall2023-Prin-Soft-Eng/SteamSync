@@ -302,9 +302,73 @@ body {
     }
 }
 
-.btn-primary {
-    background-color
+.card:hover {
+    border-color: #ffffff;
+    transform: scale(1.05);
+}
 
+.card-img-top {
+    height: 60%;
+    object-fit: cover;
+    width: 100%;
+}
 
+.card-body {
+    padding: 1.25rem;
 
+}
 
+.card-title {
+    transition: color 0.3s ease-in-out;
+}
+.card:hover .card-title {
+    color: #BA6DBB; / Replace with your desired color /
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; / Limit text to 3 lines /
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-primary:hover {
+    background-color: #1B2838; / Replace with your desired hover color /
+    border-color: #FFFFFF; / Replace with the desired border color if needed
+}
+
+/* Custom CSS for Navbar Links */
+.navbar-nav .nav-link {
+    background: linear-gradient(to right, #1B2838, #2C3E50); /* Gradient background */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for size */
+    border-radius: 30px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin-right: 10px; /* Spacing between buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-link:hover {
+    transform: translateY(-2px); /* Slight raise on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow increase on hover */
+}
+
+/* Custom CSS for active state of the nav link */
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-link:active {
+    background: linear-gradient(to right, #1B2838, #2C3E50); /* Gradient background for active state */
+}
+
+/* If using Bootstrap, override button styles for the search button */
+.navbar .btn-outline-success {
+    background: transparent;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #4CAF50; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
