@@ -1,53 +1,91 @@
 <table>
   <tr>
-    <td><img src="https://i.postimg.cc/T37qn9PY/Steam-Sync-logo.png" alt="Steam-Sync-logo" width="250"></td>
-    <td>
-      <h1 style="font-size: 32px; margin-bottom: 5px;"><strong>SteamSync</strong> 🎮</h1>
-      <h3 style="margin-top: 0;">Empower Your Game Discovery Journey</h3>
-    </td>
+    <td><img src="https://i.postimg.cc/vHbpLQYP/purple-png.png" alt="Steam-Sync-logo" height="220" width="1000"></td>
   </tr>
 </table>
 
-**Submitted by:** Group 10
-
-- **Carlos Villatoro**: Project Manager
-- **Marco Puig**: Front-end Developer
-- **Duncan McKinley**: Back-end Developer
-- **Fred DeBiase**: UX/UI Designer
-  
-## 🚀 **Overview**
+## 🚀 Overview
 **SteamSync** is your gateway to game recommendations. With a vast and expanding universe of games out there, we're here to guide you to those that resonate with your unique taste, blending your gaming history with our community-driven suggestions.
 
-**Time Invested**: ⏳ 12 hours and counting...
+**Time Invested**: ⏳ 20 hours and counting...
+
+**Submitted by**: Group 10
 
 ---
 
-## 🛠 **Features**
+## 🛠 Features
 
-### **Coming Soon:**
+### Coming Soon:
 - [x] 🔍 **Personalized Game Recommendations** - Tailored picks for every gamer.
-- [ ] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
-- [X] 🎛 **Advanced Game Search** - Dive deep with precise filters.
+- [x] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
+- [x] 🎛 **Advanced Game Search** - Dive deep with precise filters.
 
-### **Already Rolled Out:**
+### Already Rolled Out:
 - [x] 🎨 Figma Blueprint
 - [x] 📡 Steam API Integration
 
 ---
 
-## 🎥 **Screenshots & Walkthroughs**
-### **Figma Design:**
-<img src='https://i.postimg.cc/3w5vJ0R9/figma-group-10.png' border='0' alt='figma-group-10' width='1000'/>
+## 👨‍💻 Team Contributions
 
-## 🔗 **Links**
-coming soon....
+### Marco Puig
+- **Position**: Front-end Developer
+- **Responsibilities**: 
+  - Designed the main landing page UI.
+  - Ensured responsive design for multiple devices.
+  - Integrated Steam API for user data retrieval.
+  - Prototyped features with JavaScript.
+- **Testing**:
+  - Performed cross-browser compatibility and responsiveness checks.
 
-## 📝 **Development Notes**
-Crafting the **SteamSync** recommendation engine posed intricate challenges given the sheer volume of games and the spectrum of player preferences. Our journey with the Steam API was paved with learnings, tweaks, and triumphs.
+### Duncan McKinley
+- **Position**: Back-end Developer
+- **Responsibilities**:
+  - Optimized database queries.
+  - Implemented data validation and error handling.
+  - Integrated caching for performance enhancement.
+  - Set up scheduled tasks for data updates.
+  - Tested and debugged front-end integrations with Python.
+
+### Carlos Villatoro 
+- **Position**: Project Manager
+- **Responsibilities**:
+  - Managed project scope and deliverables.
+  - Coordinated task distribution and timelines.
+  - Conducted regular project status meetings.
+- **Approach**:
+  - Adhered to Agile methodology.
+  - Implemented risk management strategies.
+  - Maintained an open feedback environment.
+
+### Fred DeBiase
+- **Position**: UX/UI Designer
+- **Responsibilities**:
+  - Created wireframes and layouts for key website pages.
+  - Developed visual design language and UI consistency.
+  - Collaborated with developers for design integration.
+- **Design Focus**:
+  - Emphasized user-centered design principles.
+  - Ensured scalability and responsiveness in design.
 
 ---
 
-## ⚖ **License**
+## 🎥 Screenshots & Walkthroughs
+
+### Figma Design:
+<img src='https://i.postimg.cc/3w5vJ0R9/figma-group-10.png' border='0' alt='figma-group-10' width='1000'/>
+
+---
+
+## 🔗 Links
+*Coming soon...*
+
+## 📝 Development Notes
+The development of **SteamSync**'s recommendation engine was a complex task that involved navigating a large dataset of games and diverse user preferences. Our experience with the Steam API brought valuable insights and improvements to our platform.
+
+---
+
+## ⚖ License
     Copyright [2023] [Group: Duncan McKinley, Marco Puig, Carlos Villatoro, Fred DeBiase]
 
     Licensed under the Apache License, Version 2.0 (the "License");
