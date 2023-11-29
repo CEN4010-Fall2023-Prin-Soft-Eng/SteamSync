@@ -65,16 +65,15 @@
 
 <div class="container mt-3">
     <!-- Loop through each category -->
-
-        {% if category.id != 'cat_spotlight' and category.id != 'cat_specials' %} <!-- Exclude 'specials' category -->
-
+    {% for category_id, category in categories.items() %}
+        {% if category.id == 'cat_specials' %} <!-- Show only 'specials' category -->
             <div class="category-title">{{ category.name }}</div>
 
             {% set displayed_games = [] %}
-            <div class="slider">
+            <div class="row"> <!-- Use Bootstrap row for a grid layout -->
                 {% for item in category['items'] %}
                     {% if item.name not in displayed_games %}
-                        <div>
+                        <div class="col-md-4"> <!-- Adjust the column size as needed -->
                             <div class="card bg-dark larger-card">
                                 <a href="{{ item.detail_url }}">
                                     <img src="{{ item.header_image }}" alt="{{ item.name }}" class="card-img-top img-fluid">
@@ -96,6 +95,8 @@
         {% endif %}
     {% endfor %}
 </div>
+
+
 
 <script>
 $(document).ready(function(){

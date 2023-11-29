@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>SteamSync - Gamespot Articles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="/home">
@@ -23,16 +24,25 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/home">Home</a>
                 </li>
+
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Discounted_games">Specials</a>
+                </li>
             </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home_with_news">News</a>
+                </li>
+
             <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
-    </nav>
 
     <div class="container mt-4">
-        <h1 class="text-center mb-4">Gamespot Articles</h1>
+
         <div class="row">
             {% for article in articles %}
                 <div class="col-md-4 mb-4">
