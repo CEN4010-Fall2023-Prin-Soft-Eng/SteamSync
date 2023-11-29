@@ -65,8 +65,9 @@
 
 <div class="container mt-3">
     <!-- Loop through each category -->
-    {% for category_id, category in categories.items() %}
+
         {% if category.id != 'cat_spotlight' and category.id != 'cat_specials' %} <!-- Exclude 'specials' category -->
+
             <div class="category-title">{{ category.name }}</div>
 
             {% set displayed_games = [] %}
@@ -95,7 +96,6 @@
         {% endif %}
     {% endfor %}
 </div>
-
 
 <script>
 $(document).ready(function(){

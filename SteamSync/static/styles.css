@@ -318,20 +318,22 @@ body {
 
 }
 
-.card-title {
+
     transition: color 0.3s ease-in-out;
 }
 .card:hover .card-title {
     color: #BA6DBB; / Replace with your desired color /
+
 }
 
 .card-text {
-    display: -webkit-box;
+
     -webkit-line-clamp: 3; / Limit text to 3 lines /
+
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+
 
 .btn-primary:hover {
     background-color: #1B2838; / Replace with your desired hover color /
@@ -372,3 +374,4 @@ body {
     background-color: #4CAF50; /* Background color on hover */
     color: white; /* Text color on hover */
 }
+
