@@ -7,7 +7,7 @@ import urllib.parse
 
 app = Flask(__name__)
 
-RAPIDAPI_KEY = "c5a2ffe436msh751d8ed39930b58p19da33jsn81112dfec3fa"
+RAPIDAPI_KEY = "887b3f8b15mshbd3fe8a5db8cdefp19c527jsnfc5aacbdb5ad"
 GAMESPOTAPI_KEY = "15db3545ca5bec59186fca6096262dfacf0c7659"
 RAPIDAPI_HOST = "steam2.p.rapidapi.com"
 GAME_SPOT_API_BASE_URL = "https://www.gamespot.com/api"
