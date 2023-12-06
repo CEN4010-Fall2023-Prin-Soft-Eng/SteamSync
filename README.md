@@ -78,8 +78,8 @@
 ---
 
 ## 🔗 Links
-Project Writeup: https://docs.google.com/document/d/1qL1sP7-15PbBr87Af-ZNZQfiEj_WoBRthYSpdCiaoAQ/edit?usp=sharing 
-Website Link: https://steamsyncfinal-145eac2ef936.herokuapp.com/
+-  Project Writeup: https://docs.google.com/document/d/1qL1sP7-15PbBr87Af-ZNZQfiEj_WoBRthYSpdCiaoAQ/edit?usp=sharing 
+-  Website Link: https://steamsyncfinal-145eac2ef936.herokuapp.com/
 
 ## 📝 Development Notes
 The development of **SteamSync**'s recommendation engine was a complex task that involved navigating a large dataset of games and diverse user preferences. Our experience with the Steam API brought valuable insights and improvements to our platform.
