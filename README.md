@@ -17,13 +17,12 @@
 
 ### Coming Soon:
 - [x] 🔍 **Personalized Game Recommendations** - Tailored picks for every gamer.
-- [x] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
-- [x] 🎛 **Advanced Game Search** - Dive deep with precise filters.
 
 ### Already Rolled Out:
 - [x] 🎨 Figma Blueprint
 - [x] 📡 Steam API Integration
-
+- [x] 🔄 **Steam Profile Synchronization** - Merge your Steam universe with SteamSync.
+- [x] 🎛 **Advanced Game Search** - Dive deep with precise filters.
 ---
 
 ## 👨‍💻 Team Contributions
